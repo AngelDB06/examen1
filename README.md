@@ -21,3 +21,5 @@ Posteriormente hará un merge en la rama develop cogiendo los archivos de featur
 # Crear rama release y realizar pruebas unitarias
 
 En esta parte el alumno 1 simplemente creará la rama release, donde hara un merge de los archivos de develop y posteriormente un push para subirlo a Github y que se ejecute el workflow de las pruebas unitarias y documentación.
+
+## ENLACE AL PROYECTO DESPLEGADO: examen.2dawangeldb.com
