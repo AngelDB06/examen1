@@ -1,0 +1,24 @@
+{
+  "name": "examen1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest",
+    "docs": "jsdoc src -r -d docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngelDB06/examen1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngelDB06/examen1/issues"
+  },
+  "homepage": "https://github.com/AngelDB06/examen1#readme"
+}
