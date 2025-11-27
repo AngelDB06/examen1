@@ -10,5 +10,3 @@ Las ramas de este proyecto se basan en un flujo GitFlow sencillo donde contamos 
 -/feature/coding-test-docs (realizar tareas concretas del proyecto)
 
 Cada una utilizada para sus tareas.
-
-##
