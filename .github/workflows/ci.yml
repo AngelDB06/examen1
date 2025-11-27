@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - "release"
+
+jobs:
+  test:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install && npm install jest jsdoc --no-save
+
+      - name: Run tests
+        run: npm test
+
+  docs:
+    name: Generate Documentation
+    runs-on: ubuntu-latest
+    needs: test 
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install JSDoc
+        run: npm install jsdoc --no-save
+
+      - name: Generate Documentation
+        run: npm run docs
+
+      - name: Upload Documentation as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: docs/
+  deploy:
+    name: Deploy to Vercel
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: npx vercel deploy --yes --prod --token=${{ secrets.VERCEL_TOKEN }} ./src
